@@ -18,6 +18,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Health endpoint za Render/UptimeRobot
+app.get('/health', (req, res) => res.status(200).send('ok'));
+
 // Route principale - supporta sia il vecchio che il nuovo sistema
 app.get('/', async (req, res) => {
    const protocol = req.headers['x-forwarded-proto'] || req.protocol;
